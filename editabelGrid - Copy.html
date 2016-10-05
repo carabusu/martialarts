@@ -1,332 +1,218 @@
 
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
+		<script src="http://www.editablegrid.net/editablegrid/editablegrid.js"></script>
+		<!-- [DO NOT DEPLOY] --> <script src="http://www.editablegrid.net/editablegrid/editablegrid_renderers.js" ></script>
+		<!-- [DO NOT DEPLOY] --> <script src="http://www.editablegrid.net/editablegrid/editablegrid_editors.js" ></script>
+		<!-- [DO NOT DEPLOY] --> <script src="http://www.editablegrid.net/editablegrid/editablegrid_validators.js" ></script>
+		<!-- [DO NOT DEPLOY] --> <script src="http://www.editablegrid.net/editablegrid/editablegrid_utils.js" ></script>
+		<!-- [DO NOT DEPLOY] --> <script src="http://www.editablegrid.net/editablegrid/editablegrid_charts.js" ></script>
+		<link rel="stylesheet" href="http://www.editablegrid.net/editablegrid./editablegrid.css" type="text/css" media="screen">
+		
+		<style>
+			body { font-family:'lucida grande', tahoma, verdana, arial, sans-serif; font-size:11px; }
+			h1 { font-size: 11px; }
+			a { color: #548dc4; text-decoration: none; }
+			a:hover { text-decoration: underline; }
+			table.testgrid { border-collapse: collapse; border: 1px solid #CCB; width: 705px; font-size: 11px }
+			table.testgrid td, table.testgrid th { padding: 5px; border: 1px solid #E0E0E0;text-align: center;  color:rgb(0, 0, 128)}
+			table.testgrid th { background: rgb(214, 234, 248); text-align: center;  color:rgb(0, 0, 128)}
+			input.invalid { background: red; color: #FDFDFD; }
+		</style>
+		
+		<script>
+			window.onload = function() {
+              editableGrid = new EditableGrid("DemoGridAttach", { sortIconUp: "up.png", sortIconDown: "down.png"}); 
 
-<script src="http://www.editablegrid.net/editablegrid/editablegrid.js"></script>
-<!-- [DO NOT DEPLOY] -->
-<script
-	src="http://www.editablegrid.net/editablegrid/editablegrid_renderers.js"></script>
-<!-- [DO NOT DEPLOY] -->
-<script
-	src="http://www.editablegrid.net/editablegrid/editablegrid_editors.js"></script>
-<!-- [DO NOT DEPLOY] -->
-<script
-	src="http://www.editablegrid.net/editablegrid/editablegrid_validators.js"></script>
-<!-- [DO NOT DEPLOY] -->
-<script
-	src="http://www.editablegrid.net/editablegrid/editablegrid_utils.js"></script>
-<!-- [DO NOT DEPLOY] -->
-<script
-	src="http://www.editablegrid.net/editablegrid/editablegrid_charts.js"></script>
-<link rel="stylesheet"
-	href="http://www.editablegrid.net/editablegrid./editablegrid.css"
-	type="text/css" media="screen">
-
-<style>
-body {
-	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
-	font-size: 11px;
-}
-
-h1 {
-	font-size: 11px;
-}
-
-a {
-	color: #548dc4;
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-table.testgrid {
-	border-collapse: collapse;
-	border: 1px solid #CCB;
-	width: 720px;
-	font-size: 11px
-}
-
-table.testgrid td, table.testgrid th {
-	padding: 5px;
-	border: 1px solid #E0E0E0;
-	text-align: center;
-	color: rgb(0, 0, 128)
-}
-
-table.testgrid th {
-	background: rgb(214, 234, 248);
-	text-align: center;
-	color: rgb(0, 0, 128)
-}
-
-input.invalid {
-	background: red;
-	color: #FDFDFD;
-}
-</style>
-
-<script>
-	window.onload = function() {
-		editableGrid = new EditableGrid("DemoGridAttach", {
-			sortIconUp : "up.png",
-			sortIconDown : "down.png"
-		});
-
-		// we build and load the metadata in Javascript
-		editableGrid.load({
-			metadata : [ {
-				name : "type",
-				datatype : "string",
-				editable : false
-			}, {
-				name : "id",
-				datatype : "string",
-				editable : false
-			}, {
-				name : "owner",
-				datatype : "string",
-				editable : false
-			}, {
-				name : "test?",
-				datatype : "string",
-				editable : false
-			}, {
-				name : "tcs",
-				datatype : "string",
-				editable : false
-			}, {
-				name : "testing status",
-				datatype : "string",
-				editable : false
-			}, {
-				name : "id",
-				datatype : "string",
-				editable : false
-			}, {
-				name : "age",
-				datatype : "integer",
-				editable : true
-			}, {
-				name : "height",
-				datatype : "double(m,2)",
-				editable : true
-			}, {
-				name : "country",
-				datatype : "string",
-				editable : true,
-				values : {
-					'Europe' : {
-						"be" : "Belgium",
-						"fr" : "France",
-						"uk" : "Great-Britain",
-						"nl" : "Nederland"
+				// we build and load the metadata in Javascript
+				editableGrid.load({ metadata: [
+					{ name: "type", datatype: "string", editable: false },
+					{ name: "id", datatype: "string", editable: false },
+					{ name: "owner", datatype: "string", editable: false },
+					{ name: "test?", datatype: "string", editable: false },
+					{ name: "tcs", datatype: "string", editable: false },
+					{ name: "testing status", datatype: "string", editable: false },
+					{ name: "id", datatype: "string", editable: false },
+					{ name: "age", datatype: "integer", editable: true },
+					{ name: "height", datatype: "double(m,2)", editable: true },
+					{ name: "country", datatype: "string", editable: true, values: 
+					  	{ 'Europe': { "be" : "Belgium", "fr" : "France", "uk" : "Great-Britain", "nl": "Nederland"},
+						  'America': { "br" : "Brazil", "ca": "Canada", "us" : "USA" },
+						  'Africa': { "ng" : "Nigeria", "za": "South-Africa", "zw" : "Zimbabwe" }
+					  	}
 					},
-					'America' : {
-						"br" : "Brazil",
-						"ca" : "Canada",
-						"us" : "USA"
-					},
-					'Africa' : {
-						"ng" : "Nigeria",
-						"za" : "South-Africa",
-						"zw" : "Zimbabwe"
-					}
-				}
-			}, {
-				name : "email",
-				datatype : "email",
-				editable : true
-			}, {
-				name : "freelance",
-				datatype : "boolean",
-				editable : true
-			}, {
-				name : "lastvisit",
-				datatype : "date",
-				editable : true
-			} ]
-		});
+					{ name: "email", datatype: "email", editable: true },
+					{ name: "freelance", datatype: "boolean", editable: true },
+					{ name: "lastvisit", datatype: "date", editable: true }
+				]});
 
-		// then we attach to the HTML table and render it
-		editableGrid.attachToHTMLTable('htmlgrid');
-		editableGrid.renderGrid();
-	}
-</script>
-
-</head>
-
-<body>
-	<!-- <table id="htmlgrid" class="testgrid"> -->
-	<table id="" class="testgrid">
-		<tr>
-			<th>#</th>
-			<th>ID</th>
-			<th>Status</th>
-			<th>Owner</th>
-			<th>Test?</th>
-			<th>TCs</th>
-			<th>Testing status</th>
-		</tr>
-		<tr id="R0">
-			<td><img src="
+				// then we attach to the HTML table and render it
+				editableGrid.attachToHTMLTable('htmlgrid');
+				editableGrid.renderGrid();
+			} 
+		</script>
+		
+	</head>
+	
+	<body>
+		<!-- <table id="htmlgrid" class="testgrid"> -->
+		<table id="" class="testgrid">
+			<tr>
+				<th>#</th>
+				<th>ID</th>
+				<th>Status</th>
+				<th>Owner</th>
+				<th>Test?</th>
+				<th>TCs</th>
+				<th>Testing status</th>
+			</tr>
+							<tr id="R0">
+		    		<td><img src="
 		    			SR.jpg
-												"></td>
-			<td><a
-				href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1319826"
-				target="_blank">1319826</a></td>
-			<td>Resolved in DEV</td>
-			<td>Tomas Kanovsky</td>
-			<td>Yes</td>
-			<td>1</td>
-			<td>Not Started</td>
-		</tr>
-		<tr id="R1">
-			<td><img src="
+												" width="50%" height="70%" >
+					</td>
+		   		 	<td> <a href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1319826" target="_blank">1319826</a></td>
+		   		 	<td>Resolved in DEV</td>
+		   		 	<td>Tomas Kanovsky</td>
+		   		 	<td>Yes</td>
+		   		 	<td>1</td>
+		   		 	<td>Not Started</td>
+			    </tr>
+							<tr id="R1">
+		    		<td><img src="
 		    			SR.jpg
-												"></td>
-			<td><a
-				href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1323299"
-				target="_blank">1323299</a></td>
-			<td>In Progress</td>
-			<td>George Grigore1</td>
-			<td>Yes</td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr id="R2">
-			<td><img src="
+												" width="50%" height="70%" >
+					</td>
+		   		 	<td> <a href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1323299" target="_blank">1323299</a></td>
+		   		 	<td>In Progress</td>
+		   		 	<td>George Grigore1</td>
+		   		 	<td>Yes</td>
+		   		 	<td></td>
+		   		 	<td></td>
+			    </tr>
+							<tr id="R2">
+		    		<td><img src="
 		    			SR.jpg
-												"></td>
-			<td><a
-				href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1333700"
-				target="_blank">1333700</a></td>
-			<td>In Progress</td>
-			<td>Jan Steuer</td>
-			<td>No</td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr id="R3">
-			<td><img src="
+												" width="50%" height="70%" >
+					</td>
+		   		 	<td> <a href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1333700" target="_blank">1333700</a></td>
+		   		 	<td>In Progress</td>
+		   		 	<td>Jan Steuer</td>
+		   		 	<td>No</td>
+		   		 	<td></td>
+		   		 	<td></td>
+			    </tr>
+							<tr id="R3">
+		    		<td><img src="
 		    			SR.jpg
-												"></td>
-			<td><a
-				href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1333574"
-				target="_blank">1333574</a></td>
-			<td>In Progress</td>
-			<td>Jiri Staroba</td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr id="R4">
-			<td><img src="
+												" width="50%" height="70%" >
+					</td>
+		   		 	<td> <a href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1333574" target="_blank">1333574</a></td>
+		   		 	<td>In Progress</td>
+		   		 	<td>Jiri Staroba</td>
+		   		 	<td></td>
+		   		 	<td></td>
+		   		 	<td></td>
+			    </tr>
+							<tr id="R4">
+		    		<td><img src="
 		    			SR.jpg
-												"></td>
-			<td><a
-				href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1313163"
-				target="_blank">1313163</a></td>
-			<td>In Progress</td>
-			<td>Jiri Staroba</td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr id="R5">
-			<td><img src="
+												" width="50%" height="70%" >
+					</td>
+		   		 	<td> <a href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1313163" target="_blank">1313163</a></td>
+		   		 	<td>In Progress</td>
+		   		 	<td>Jiri Staroba</td>
+		   		 	<td></td>
+		   		 	<td></td>
+		   		 	<td></td>
+			    </tr>
+							<tr id="R5">
+		    		<td><img src="
 		    			SR.jpg
-												"></td>
-			<td><a
-				href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1319821"
-				target="_blank">1319821</a></td>
-			<td>In Progress</td>
-			<td>Razvan Ionut</td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr id="R6">
-			<td><img src="
+												" width="50%" height="70%" >
+					</td>
+		   		 	<td> <a href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1319821" target="_blank">1319821</a></td>
+		   		 	<td>In Progress</td>
+		   		 	<td>Razvan Ionut</td>
+		   		 	<td></td>
+		   		 	<td></td>
+		   		 	<td></td>
+			    </tr>
+							<tr id="R6">
+		    		<td><img src="
 		    			prodbug.GIF
-												"></td>
-			<td><a
-				href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1318693"
-				target="_blank">1318693</a></td>
-			<td>In Progress</td>
-			<td>David Polach</td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr id="R7">
-			<td><img src="
+												" width="50%" height="70%" >
+					</td>
+		   		 	<td> <a href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1318693" target="_blank">1318693</a></td>
+		   		 	<td>In Progress</td>
+		   		 	<td>David Polach</td>
+		   		 	<td></td>
+		   		 	<td></td>
+		   		 	<td></td>
+			    </tr>
+							<tr id="R7">
+		    		<td><img src="
 		    			SR.jpg
-												"></td>
-			<td><a
-				href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1333705"
-				target="_blank">1333705</a></td>
-			<td>New</td>
-			<td>Jan Steuer</td>
-			<td>No</td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr id="R8">
-			<td><img src="
+												" width="50%" height="70%" >
+					</td>
+		   		 	<td> <a href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1333705" target="_blank">1333705</a></td>
+		   		 	<td>New</td>
+		   		 	<td>Jan Steuer</td>
+		   		 	<td>No</td>
+		   		 	<td></td>
+		   		 	<td></td>
+			    </tr>
+							<tr id="R8">
+		    		<td><img src="
 		    			SR.jpg
-												"></td>
-			<td><a
-				href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1334380"
-				target="_blank">1334380</a></td>
-			<td>New</td>
-			<td>David Polach</td>
-			<td>No</td>
-			<td>0</td>
-			<td>Not Started</td>
-		</tr>
-		<tr id="R9">
-			<td><img src="
+												" width="50%" height="70%" >
+					</td>
+		   		 	<td> <a href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1334380" target="_blank">1334380</a></td>
+		   		 	<td>New</td>
+		   		 	<td>David Polach</td>
+		   		 	<td>No</td>
+		   		 	<td>0</td>
+		   		 	<td>Not Started</td>
+			    </tr>
+							<tr id="R9">
+		    		<td><img src="
 		    			SR.jpg
-												"></td>
-			<td><a
-				href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1317899"
-				target="_blank">1317899</a></td>
-			<td>New</td>
-			<td>Radu Nicoara</td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr id="R10">
-			<td><img src="
+												" width="50%" height="70%" >
+					</td>
+		   		 	<td> <a href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1317899" target="_blank">1317899</a></td>
+		   		 	<td>New</td>
+		   		 	<td>Radu Nicoara</td>
+		   		 	<td></td>
+		   		 	<td></td>
+		   		 	<td></td>
+			    </tr>
+							<tr id="R10">
+		    		<td><img src="
 		    			SR.jpg
-												"></td>
-			<td><a
-				href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1333517"
-				target="_blank">1333517</a></td>
-			<td>New</td>
-			<td>Radu Nicoara</td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr id="R11">
-			<td><img src="
+												" width="50%" height="70%" >
+					</td>
+		   		 	<td> <a href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1333517" target="_blank">1333517</a></td>
+		   		 	<td>New</td>
+		   		 	<td>Radu Nicoara</td>
+		   		 	<td></td>
+		   		 	<td></td>
+		   		 	<td></td>
+			    </tr>
+							<tr id="R11">
+		    		<td><img src="
 		    			prodbug.GIF
-												"></td>
-			<td><a
-				href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1314873"
-				target="_blank">1314873</a></td>
-			<td>New</td>
-			<td>Jiri Staroba</td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-	</table>
-</body>
-
+												" width="50%" height="70%" >
+					</td>
+		   		 	<td> <a href="https://igartc03.swg.usma.ibm.com/jazz/web/projects/RFS%20-%20RTC%20%28PgMP%29#action=com.ibm.team.workitem.viewWorkItem&id=1314873" target="_blank">1314873</a></td>
+		   		 	<td>New</td>
+		   		 	<td>Jiri Staroba</td>
+		   		 	<td></td>
+		   		 	<td></td>
+		   		 	<td></td>
+			    </tr>
+					</table>
+	</body>
+	
 </html>
